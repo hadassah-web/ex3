@@ -26,9 +26,7 @@
      * @param {url} a url to fetch
      */
     try {
-      console.log(url);
       const res = await fetch(url);
-      console.log(res.status);
       // TODO. why only 200?
       if (res.status !== 200) {
         if (res.status === 404) {
@@ -87,17 +85,15 @@
     ).innerHTML += `<li><a href="${item.html_url}">${item.name}</a></li>`;
   }
 
+  //TODO, this function needs organizing
   async function getData() {
     document.getElementById("repos_list").innerHTML = "";
     document.getElementById("followers_list").innerHTML = "";
     const input_text = userInput();
 
     if (!input_text) {
-      console.log("empty string");
       errorDisplay(true, "No input!");
       return;
-    } else {
-      console.log("not empty");
     }
 
     const {
@@ -135,6 +131,8 @@
   }
 
   async function saveData() {
+    //TODO, should all this be done here or in the router function?
+    //TODO ask solange, does search need to be clicked b4 save?
     const name = userInput();
     if (name === "") {
       errorDisplay(true, "No input!");
@@ -143,11 +141,17 @@
     appendToList("saved_list", name);
   }
   (function() {
-    console.log("loaded");
+    // adding all the needed even listeners
     searchBtn.addEventListener("click", getData);
     saveBtn.addEventListener("click", saveData);
     textBox.addEventListener("click", () => {
       errorBox.classList.add("d-none");
+    });
+    textBox.addEventListener("keyup", event => {
+      event.preventDefault();
+      if (event.keyCode === 13) {
+        searchBtn.click();
+      }
     });
   })();
 })();
