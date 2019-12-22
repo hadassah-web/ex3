@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Github Search Engine</title>
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- defer makes sure to not load the index.js till dom is loaded -->
+    <script type="text/javascript" src="javascripts/index.js" defer></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Github search</h1>
+        <h2>User name</h2>
+
+        <div class="form-group">
+            <input type="text" class="form-control" id="text_box">
+            <small class="form-text text-muted">Enter a github user name</small>
+        </div>
+
+
+
+        <div class="mb-3">
+            <button id="search_btn" type="button" class="btn btn-primary mr-2">Search</button>
+            <button id="save_btn" type="button" class="btn btn-success mr-2">Save</button>
+            <button id="delete_btn" type="button" class="btn btn-danger">Delete</button>
+        </div>
+
+        <div id="error_message" class="alert alert-warning d-none"></div>
+        <div class="row mt-4">
+
+            <!--  The info block, holds the search results  -->
+            <div id="search_results_block" class="col-6 d-none">
+                <div class="w-100 shadow p-3 mb-5 rounded">
+                    <div class="alert alert-info font-weight-bold" id="user-search-view"></div>
+                    <h2>Repositories</h2>
+                    <p id="no-repo-msg" class="d-none">No repos</p>
+                    <ol id="repos_list">
+                    </ol>
+                    <h2>Followers</h2>
+                    <p id="no-follower-msg" class='d-none'>No Followers</p class>
+                    <ol id="followers_list">
+                    </ol>
+                </div>
+            </div>
+
+            <!--  The saved block    -->
+            <div class="col-6 d-flex">
+                <div class="w-100 shadow p-3 mb-5 rounded">
+                    <div class="alert alert-info font-weight-bold">Saved</div>
+                    <ol id="saved_list">
+                    </ol>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
